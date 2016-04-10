@@ -1,0 +1,49 @@
+
+.page {
+    display: block;
+    width: 400px;
+    height: 700px;
+    float: left;
+    background-color: navajowhite;
+    position: absolute;
+    left: 0;
+}
+
+.pageTurnLeft {
+    position: absolute;
+    left:0px;
+    background-color: beige;
+    width: 50px;
+    height: 700px;
+    z-index: 1;
+}
+
+.pageTurnRight {
+    position: absolute;
+    /*right:10px;*/
+    background-color: #f5d8d7;
+    width: 30px;
+    height: 700px;
+}
+
+.content {
+    position: relative;
+    width: 1200px;
+    min-height: 699px;
+    display: block;
+}
+
+.pageleft {
+    left:5%;
+}
+
+.pageright {
+    left:500px;
+}
+
+.container {
+    max-width: 1280px;
+    max-height: 700px;
+    position: relative;
+    margin: auto;
+}
