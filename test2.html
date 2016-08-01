@@ -3,46 +3,149 @@
 <style type="text/css">
 
 
+    .container {
+        max-width: 1280px;
+        min-height: 700px;
+        position: relative;
+        margin: auto;
+
+
+        background:
+                url("binding_top_left.png") top left no-repeat,
+                url("binding_bottom_left.png") bottom left no-repeat,
+                url("binding_bottom_right.png") bottom right no-repeat,
+                url("binding_top_middle.png") top center no-repeat,
+                url("binding_top_right.png") top right no-repeat,
+                url("binding_top.png") top center repeat-x,
+                url("binding_bottom_left.png") bottom left no-repeat,
+                url("binding_bottom_middle.png") bottom center no-repeat,
+                url("binding_left.png") left repeat-y,
+                url("binding_right.png") right repeat-y,
+                url("binding_bottom.png") bottom center repeat-x,
+                url("binding_bg.jpg") repeat;
+
+        opacity: 1;
+        padding-top: 20px;
+        padding-bottom: 23px;
+    }
+
+
     .mysection {
         position: absolute;
         overflow: hidden;
-        width: 820px;
-        top:10px;
+        width: 1200px;
+        top:1px;
         min-height: 699px;
         transition: width 1s linear;
+        left:3.2%;
+
+        /*shadow*/
+        /*background-image: -webkit-gradient(linear, left bottom, right bottom, from(rgba(255, 255, 255, 0)), to(rgba(70, 48, 31, 0.55)));*/
+        /*background-image: -moz-linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, rgba(70, 48, 31, 0.55) 100%);*/
+        /*box-shadow: 0px 1px 20px #444;*/
+    }
+
+    .page{
+        //padding-left: 30px;
+        //padding-right: 30px;
+		//margin-left: 30px;
+		//margin-right: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 540px;
 
     }
 
     .pageleft {
         display: block;
         position: absolute;
-        background-color: aqua;
         width: 0px;
         overflow: hidden;
-        height: 702px;
-        left:820px;
-
-        border: dotted;
-        border-width: 1px;
+        height: 699px;
+        left:1200px;
+        /*border: dotted;*/
+        /*border-width: 1px;*/
         transition: left 1s linear, width 0.94s linear;
+
+        background:
+                url("page_left_binding.jpg") repeat-y right,
+                url("page_bg.jpg") right top;
+
+        z-index: 2;
     }
 
     .pageright {
         display: block;
         position: absolute;
         background-color: #59a3ff;
-        width: 399px;
+        //width: 540px;
+		width: 600px;
         height: 700px;
         z-index: 1111;
-        left:420px;
+        left:600px;
+
+        /*border: dotted;*/
+        /*border-width: 1px;*/
+
+        background:
+                url("page_right_binding.jpg") repeat-y left,
+                url("page_bg.jpg") right top;
+        z-index: 2;
+
+
     }
 
-    .container {
-        max-width: 1280px;
-        max-height: 700px;
-        position: relative;
-        margin: auto;
+    .pagesLeft {
+        background: url("pages_left.jpg");
+        position: absolute;
+        left: 25px;
+        top: 21px;
+        height: 700px;
+        width: 19px;
+        z-index: 1;
     }
+
+    .pagesRight {
+        background: url("pages_right.jpg");
+        position: absolute;
+        right: 25px;
+        top: 21px;
+        height: 700px;
+        width: 19px;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    /*.pagesRight:hover {*/
+        /*cursor: pointer;*/
+        /*box-shadow: 0px 3px 25px #444;*/
+    /*}*/
+
+    .pageTurnTargetRight {
+        width: 50px;
+        bottom: 22px;
+        height: 700px;
+        position: absolute;
+        z-index: 3000;
+        right: 3%;
+        cursor: pointer;
+
+
+    }
+
+    .PageTurnPreviewRight {
+        width: 0px;
+        background: url("pageTurnPreview-right.png");
+        background-size: 100%;
+        bottom: 22px;
+        height: 700px;
+        position: absolute;
+        z-index: 2999;
+        right: 42px;
+    }
+
+
+
 
     .turned {
         width: 0px;
@@ -51,188 +154,52 @@
 
 
     .turnedLeft {
-        left:10px;
+        left:3%;
     }
 
     .pageLeftTurned {
-        width: 400px;
+        //width: 540px;
+		width: 600px;
         left: 0px;
+        box-shadow: -15px 5px 70px 5px #444;
     }
 
     .pageLeftReTurned {
-        width: 400px;
+        //width: 540px;
+		width: 600px;
         left: 0px;
     }
 
-    .a1 {
-        background-color: #2ade32;
+    #book {
+        width: 100%;
+        position: relative;
     }
 
-
-    .a2 {
-        background-color: burlywood;
+    .shadowRight {
+        right: 0;
+        background-image: -webkit-gradient(linear, left bottom, right bottom, from(rgba(255, 255, 255, 0)), to(rgba(70, 48, 31, 0.55)));
+        background-image: -moz-linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, rgba(70, 48, 31, 0.55) 100%);
     }
+	
+	.innerPage {
+	   // padding-left: 30px;
+        //padding-right: 30px;
+		margin-left : 30px;
+		margin-right: 30px;
+	}
 
 
-    .a3 {
-        background-color: #de2c32;
-    }
 </style>
 
 
 <div class="container">
+    <div class="pagesLeft"></div>
+    <div class="pagesRight"></div>
+    <div class="pageTurnTargetRight"></div>
+    <div class="PageTurnPreviewRight"></div>
+    <div id="book">
 
-    <section class="current mysection">
-        <div id="a1" class="pageleft a1" style="display: block;z-index:66">
-            <p>
-            1 Cum elevatus ridetis, omnes brabeutaes reperire rusticus, magnum domuses.
-            Cum ratione prarere, omnes repressores attrahendam alter, salvus omniaes.
-            Salvus, bassus exemplars una reperire de fidelis, neuter amicitia.
-            Cum eleates prarere, omnes adgiumes prensionem raptus, audax eposes.
-            Cum palus trabem, omnes cannabises tractare placidus, noster medicinaes.
-            Cum historia messis, omnes rationees attrahendam gratis, mirabilis stellaes.
-            Dexter, raptus vitas inciviliter visum de gratis, primus lura.
-            Cum decor trabem, omnes fugaes fallere primus, fortis amicitiaes.
-            Festus, regius cliniass satis captis de barbatus, neuter triticum.
-            Regius, velox elogiums sensim tractare de raptus, fortis musa.
-            Cum bulla ridetis, omnes onuses imitari domesticus, germanus lamiaes.
-            Cum victrix observare, omnes torquises carpseris salvus, alter candidatuses.
-            Teres, bi-color sagas grauiter anhelare de flavum, regius gluten.
-            Ire rare ducunt ad velox abactor.</p>
-        </div>
-        <div id="a2" class="pageright a1" style="display: block;z-index:55">
-            2 Brevis cedrium rare convertams navis est.
-            Cum poeta unda, omnes terrores aperto dexter, clemens exsules.
-            Neuter, fatalis tuss virtualiter reperire de ferox, germanus fuga.
-            Superbus, camerarius abaculuss tandem examinare de fidelis, alter musa.
-            Cum olla unda, omnes uriaes carpseris placidus, germanus gloses.
-            Cum olla trabem, omnes acipenseres amor salvus, clemens clabularees.
-            Cum cedrium persuadere, omnes equisoes talem festus, peritus orgiaes.
-            Azureus, bassus abactuss interdum quaestio de mirabilis, fortis tabes.
-            Cum omnia ortum, omnes fideses aperto magnum, teres accentores.
-            Festus, secundus turpiss aliquando gratia de barbatus, neuter frondator.
-            Cum bubo potus, omnes assimilatioes visum teres, varius abnobaes.
-            Cum xiphias potus, omnes advenaes convertam velox, albus buxumes.
-            Cum adelphis prarere, omnes barcases fallere flavum, noster elogiumes.
-            Lotus, nobilis eposs interdum imperium de mirabilis, velox compater.
-            Cum olla mori, omnes omniaes gratia altus, neuter habitioes.
-            Cum bromium resistere, omnes mineralises prensionem brevis, ferox musaes.
-            Rusticus, noster genetrixs grauiter transferre de fortis, talis lacta.
-            Cum mensa potus, omnes domuses aperto mirabilis, noster sectames.
-            Magnum, fortis frondators superbe pugna de noster, teres eleates.
-            Cum urbs messis, omnes burguses desiderium audax, albus lapsuses.
-            Neuter, festus brabeutas nunquam pugna de castus, fortis poeta.
-            Audax, gratis classiss grauiter aperto de regius, pius devatio.
-            Usus trabems, tanquam peritus secula.</div>
-    </section>
-
-    <section class="mysection">
-        <div id="a3" class="pageleft a2" style="display: block;z-index:44">
-            <p style="width: 400px;">
-            3 Velum recte ducunt ad audax gemna.
-            Superbus, castus caesiums grauiter carpseris de mirabilis, lotus turpis.
-            Magnum, alter guttuss grauiter vitare de emeritis, flavum cedrium.
-            Cum urbs ire, omnes specieses gratia nobilis, clemens abactores.
-            Alter, brevis pess vix imperium de domesticus, castus zeta.
-            Cum armarium resistere, omnes urbses vitare audax, albus heureteses.
-            Noster, placidus abactuss virtualiter imperium de fatalis, magnum tabes.
-            Teres, barbatus vortexs virtualiter consumere de regius, altus abactor.
-            Cum clabulare cadunt, omnes amores contactus secundus, raptus buxumes.
-            Cum cobaltum potus, omnes gabaliumes experientia neuter, camerarius compateres.
-            Lotus, barbatus barcass sensim resuscitabo de rusticus, salvus itineris tramitem.
-            Brevis, mirabilis verpas solite quaestio de nobilis, magnum terror.
-            Cum homo cadunt, omnes consiliumes tractare brevis, clemens burguses.
-            Regius, neuter nomens diligenter tractare de peritus, ferox ventus.
-            Grandis, mirabilis orexiss recte talem de pius, nobilis equiso.
-            Peritus, camerarius equisos superbe anhelare de teres, salvus omnia.
-            Gratis, flavum valebats foris imperium de regius, brevis elevatus.
-            Velox, talis vigils sed mire gratia de regius, placidus impositio.
-            Cum planeta nocere, omnes pulchritudinees consumere brevis, talis victrixes.
-            Cum fraticinida observare, omnes eleateses anhelare fortis, audax bursaes.
-            Cum torquis persuadere, omnes orgiaes talem nobilis, camerarius mensaes.
-            Dexter, germanus cannabiss satis visum de emeritis, castus idoleum.
-            Extums persuadere, tanquam velox fiscina.
-            </p>
-        </div>
-        <div id="a4" class="pageright a2" style="display: block;z-index:33">
-            4 Turpiss sunt triticums de festus orgia.
-            Velox, superbus sectams solite prensionem de audax, dexter mens.
-            Cum racana persuadere, omnes visuses captis mirabilis, clemens lunaes.
-            Cum byssus experimentum, omnes diatriaes examinare teres, brevis musaes.
-            Peritus, rusticus aonidess sapienter reperire de camerarius, emeritis fraticinida.
-            Primus, festus speciess satis dignus de clemens, altus nix.
-            Superbus, magnum nomens saepe imperium de secundus, audax exsul.
-            Cum gallus nocere, omnes gabaliumes amor varius, magnum danistaes.
-            Rusticus, festus caniss saepe convertam de primus, flavum palus.
-            Cum species peregrinatione, omnes habitioes attrahendam placidus, festus sagaes.
-            Fatalis, albus spatiis sensim visum de placidus, bi-color guttus.
-            Cum tata messis, omnes sensoremes resuscitabo alter, rusticus lumenes.
-            Rusticus, alter ollas cito vitare de talis, altus tabes.
-            Cum abactor unda, omnes ususes examinare nobilis, flavum cottaes.
-            Salvus, gratis repressors sed mire demitto de nobilis, albus apolloniates.
-            Alter, nobilis detriuss sed mire imperium de placidus, altus bubo.
-            Cum species volare, omnes nixes talem albus, raptus nutrixes.
-            Gratis, nobilis rectors interdum tractare de emeritis, pius fraticinida.
-            Cum humani generis potus, omnes mensaes vitare varius, camerarius plasmatores.
-            Cum particula tolerare, omnes galluses magicae dexter, teres gemnaes.
-            Noster, pius galluss interdum manifestum de nobilis, dexter tus.
-            Cum turpis favere, omnes rectores carpseris rusticus, regius heureteses.
-            Vigil accelerares, tanquam flavum mensa.
-        </div>
-    </section>
-
-    <section class="mysection">
-        <div id="a3" class="pageleft a3" style="display: block;z-index:22">
-            5 Emeritis silva nunquam acquireres luba est.
-            Cum zirbus credere, omnes nuptiaes amor bassus, domesticus toruses.
-            Cum nomen observare, omnes planetaes imperium varius, bassus frondatores.
-            Cum fiscina assimilant, omnes valebates dignus camerarius, domesticus acipenseres.
-            Castus, brevis assimilatios interdum demitto de camerarius, dexter fiscina.
-            Cum advena mori, omnes armariumes amor barbatus, camerarius exsules.
-            Cum domina resistere, omnes mensaes prensionem talis, regius sagaes.
-            Cum tabes cantare, omnes fugaes captis secundus, raptus galataees.
-            Peritus, regius cursuss acceleratrix convertam de clemens, altus adelphis.
-            Magnum, audax naviss rare contactus de raptus, fortis vox.
-            Camerarius, rusticus pess etiam magicae de superbus, alter clabulare.
-            Cum racana messis, omnes verpaes visum festus, gratis lanistaes.
-            Audax, raptus sagas vix dignus de regius, emeritis axona.
-            Festus, peritus frondators grauiter magicae de barbatus, varius historia.
-            Regius, alter adiurators unus imitari de varius, peritus deus.
-            Clemens, azureus fluctuss acceleratrix examinare de peritus, barbatus silva.
-            Mirabilis, magnum hilotaes hic gratia de flavum, fidelis olla.
-            Superbus, clemens pess cito amor de grandis, rusticus guttus.
-            Varius, velox accentors absolute captis de flavum, grandis torquis.
-            Cum adiurator congregabo, omnes danistaes attrahendam velox, noster scutumes.
-            Cum equiso crescere, omnes ignigenaes visum camerarius, azureus mensaes.
-            Cum armarium trabem, omnes vigiles visum ferox, teres scutumes.
-            A falsis, onus festus usus.
-        </div>
-        <div id="a4" class="pageright a3" style="display: block;z-index:11">
-            6 Sunt mensaes promissio pius, albus devatioes.
-            Cum bursa peregrinationes, omnes messores amor dexter, secundus eleateses.
-            Raptus, bi-color turpiss virtualiter reperire de brevis, placidus solitudo.
-            Cum spatii observare, omnes ignigenaes tractare alter, neuter caculaes.
-            Talis, azureus hilotaes una experientia de ferox, dexter lamia.
-            Cum terror favere, omnes burguses acquirere peritus, camerarius liberies.
-            Alter, fortis orgias satis locus de festus, superbus agripeta.
-            Cum scutum nocere, omnes aususes experientia bassus, ferox devirginatoes.
-            Flavum, primus brabeutas grauiter magicae de alter, pius genetrix.
-            Cum abactor peregrinationes, omnes galataees desiderium superbus, albus competitiones.
-            Cum fluctui peregrinatione, omnes nuclear vexatum iacerees tractare ferox, fidelis paluses.
-            Cum lura velum, omnes ventuses magicae varius, teres absolutioes.
-            Altus, talis magisters vix visum de fidelis, germanus urbs.
-            Cum era manducare, omnes idoleumes carpseris teres, domesticus absolutioes.
-            Bassus, teres abnobas aliquando desiderium de mirabilis, rusticus lacta.
-            Magnum, rusticus caesiums diligenter demitto de fatalis, bi-color quadra.
-            Teres, azureus planetas saepe promissio de superbus, alter vigil.
-            Castus, regius abnobas sed mire contactus de altus, festus guttus.
-            Barbatus, dexter rumors rare consumere de fortis, pius cotta.
-            Cum contencio nocere, omnes ususes desiderium camerarius, albus canises.
-            Cum tabes peregrinationes, omnes apolloniateses dignus camerarius, castus domuses.
-            Cum luna favere, omnes rationees imperium fidelis, bi-color vortexes.
-            Palus observares, tanquam emeritis usus.
-        </div>
-    </section>
+    </div>
 </div>
 
 <button id="btnRight">RIGHT</button>
@@ -243,9 +210,62 @@
 
 <script>
 
+    $(document).ready(function () {
+
+        var textForPages =
+                [
+                    "Studere etiam ducunt ad fortis accola.  Raptus domus etiam resuscitabos torus est.  Trabem vix ducunt ad emeritis spatii.  Luras sunt lapsuss de audax accola.  Castus abnoba interdum pugnas scutum est.  Sunt abactuses dignus teres, fortis fugaes.  Ire acceleratrix ducunt ad secundus lumen.  Sunt messores acquirere fidelis, secundus terrores.  Index de secundus stella, vitare lura!  Persuadere interdum ducunt ad clemens torus.  Bullas sunt habenas de brevis homo.  Varius, raptus cedriums solite pugna de fatalis, nobilis triticum.  Grandis zeta una transferres demissio est.  Peregrinationes tandem ducunt ad domesticus lixa.  Ridetis superbe ducunt ad altus axona.  Unda vix ducunt ad teres gemna.  Abactors sunt sensorems de nobilis scutum.  Sunt specieses transferre barbatus, fatalis axonaes",
+                    "Lactea de alter lacta, vitare ionicis tormento! Assimilant recte ducunt ad alter homo. Alter, placidus zetas vix perdere de lotus, mirabilis lura. Particula, historia, et rumor. Eras assimilant! Silvas manducare, tanquam clemens index. Est castus rector, cesaris. Impositios sunt amicitias de alter bulla. Heu. Guttus pius zirbus est. Cum heuretes prarere, omnes tataes aperto regius, festus uriaes. Detriuss sunt devirginatos de primus onus. Mons observares, tanquam albus torquis. Nunquam desiderium elogium. Dexter, raptus calcarias cito imperium de talis, ferox saga. Ignigenas observare in cirpi! Neuter urias ducunt ad hibrida. Cum lumen nocere, omnes stellaes vitare azureus, raptus medicinaes. Brevis olla inciviliter anhelares burgus est. Mori unus ducunt ad brevis zirbus",
+
+                    "Fatalis quadras ducunt ad palus. Gratis cacula interdum perderes hydra est. Devatios tolerare in noster oenipons! Animalis, tata, et silva. Ubi est dexter index? Fugas manducare in rugensis civitas! Est festus solitudo, cesaris. Medicinas mori in infernum! Cur nuclear vexatum iacere nocere? Torquis de flavum historia, locus frondator! Secundus barcas interdum demittos xiphias est. Est teres verpa, cesaris. Spatii grandis clabulare est. Pol, hippotoxota! Ubi est clemens orgia? Festus absolutios ducunt ad solitudo. Ecce, germanus advena! Clinias de grandis diatria, acquirere bubo! Burguss sunt cobaltums de clemens cacula. Cur poeta prarere? Cum vita trabem, omnes armariumes manifestum albus, grandis animalises. Regius, primus devatios velox perdere de placidus, alter planeta.",
+                    "Cum magister studere, omnes eleateses tractare dexter, placidus onuses. Messors peregrinatione! Assimilatios ridetis in azureus hamburgum! Cum equiso ridetis, omnes silvaes prensionem nobilis, varius buxumes. Festus era saepe desideriums lacta est. Animaliss resistere in hortus! Vae, deus! Heu, brabeuta! Caesiums experimentum! Tolerare hic ducunt ad barbatus omnia. Particula, repressor, et humani generis. Dexter, bi-color nutrixs virtualiter contactus de audax, emeritis tabes. Nunquam attrahendam turpis. Luras studere, tanquam fidelis burgus. Plasmator congregabos, tanquam fatalis lura. Vigils trabem, tanquam primus poeta. Classis, advena, et brabeuta. Alter, superbus bubos vix magicae de magnum, mirabilis parma. Cedriums peregrinationes in hamburgum! Ubi est gratis exemplar? Camerarius, teres terrors una visum de lotus, talis urbs.",
+
+                    "Adiurators crescere, tanquam salvus itineris tramitem. Sunt gabaliumes magicae domesticus, grandis absolutioes. Demissios prarere in palatium! Sunt seculaes attrahendam castus, ferox adgiumes. Accentor persuaderes, tanquam fortis bulla. Cur vortex cadunt? Lacteas sunt humani generiss de salvus elevatus. Palus, lacta, et bromium. A falsis, messor superbus ignigena. Apolloniatess assimilant, tanquam ferox zirbus. Ecce, pes! Noster amors ducunt ad fluctus. Talis, domesticus abaculuss patienter transferre de camerarius, emeritis lacta. Bassus, primus ionicis tormentos saepe tractare de magnum, talis pars. Ire absolute ducunt ad superbus spatii. Luras nocere in tornacum! Sunt canises acquirere magnum, peritus habitioes. Salvus lura etiam tractares medicina est. Ubi est azureus accentor? Cum torus tolerare, omnes sectames amor clemens, teres fluctuies.",
+                    "Humani generiss peregrinatione in teres avenio! Cur contencio crescere? Talis vortexs ducunt ad turpis. Lunas observare, tanquam dexter cedrium. Ollas accelerare! Hercle, navis bi-color!, flavum mineralis! Barbatus messor vix imperiums diatria est. A falsis, equiso albus gallus. Ecce, tus! Est neuter palus, cesaris. Indexs cantare in antverpia! Cum torus prarere, omnes lapsuses acquirere primus, magnum caculaes. Est ferox barcas, cesaris. Ortum semper ducunt ad talis gallus. Vae. Ignigenas sunt stellas de albus lixa. Vae, rusticus castor! Solem de peritus genetrix, perdere luna! A falsis, index talis turpis. Diatrias tolerare! Ubi est regius zelus? Calceus, lumen, et zeta. Eheu, danista! Cum fermium experimentum, omnes nuclear vexatum iacerees acquirere emeritis, mirabilis tataes.",
+
+                    "Vigils tolerare, tanquam teres axona. A falsis, tabes emeritis planeta. Adiurator clemens absolutio est. A falsis, cursus alter palus. Terror accelerares, tanquam mirabilis medicina. Sunt aususes pugna germanus, audax parmaes. Nunquam resuscitabo gallus. Nunquam tractare zelus. Pol, a bene detrius, assimilatio! Vae, gratis navis! Canis crederes, tanquam brevis cannabis. Audax spatiis ducunt ad zeta. Varius fides saepe pugnas cobaltum est. Hercle, mortem lotus!, lumen! Rumors sunt calceuss de bassus caesium. Barcass sunt nutrixs de secundus apolloniates. Competition, saga, et cacula. Gloss accelerare in hamburgum! Est audax amicitia, cesaris. Nunquam visum armarium. Sunt exsules prensionem pius, bi-color nixuses. Est ferox abnoba, cesaris. Regius, secundus vitas rare dignus de domesticus, azureus sectam.",
+                    "Lubas resistere in germanus moscua! Sunt habenaes imperium pius, festus ususes. Ubi est audax fraticinida? Cantare rare ducunt ad bassus clabulare. Potus saepe ducunt ad magnum capio. A falsis, genetrix pius hibrida. Bursa ires, tanquam fatalis clabulare. Est noster urbs, cesaris. Brodium, lumen, et visus. Nunquam imitari bubo. Placidus rumors ducunt ad guttus. Indictios observare! Cur extum peregrinationes? Est germanus nuclear vexatum iacere, cesaris. Cur lixa mori? Cur guttus accelerare? Velum unus ducunt ad neuter aonides. Hercle, spatii nobilis!, bassus quadra! Tabess cantare, tanquam regius navis. Nutrixs ortum, tanquam fortis habitio. Stellas assimilant in regius tubinga! Raptus, fatalis tumultumques absolute resuscitabo de secundus, superbus particula. A falsis, triticum altus cannabis,"
+
+                ]
 
 
-    $('#btnRight').on('click', function () {
+        var gen = "";
+
+
+        for(var i=0;i<textForPages.length-1;i+=2){
+            gen +=  '<section class="mysection">'+
+                    '<div id="a1" class="page pageleft a1" style="display: block;z-index:'+(999)+'">'+
+						'<div class="innerPage">'+
+							'<p style="width: 540px;">'+(i)+' '+textForPages[i]+'</p>'+
+						'</div>'+
+					'</div>'+
+                    '<div id="a2" class="page pageright a1" style="display: block;z-index:'+(999-i-1)+'">'+
+						'<div class="innerPage">'+
+							' <p style="width: 540px;">'+(i+1)+' '+textForPages[i+1]+'</p>'+
+						'</div>'+
+                    '</div>'+
+                    '</section>'
+        }
+
+        $('#book').html(gen);
+
+        $('#book section').first().addClass("current");
+
+
+        $('.pageTurnTargetRight').hover(function () {
+            $('.PageTurnPreviewRight').animate({'width': '200px'},
+                    {duration: 400, easing: 'swing'});
+        }, function () {
+            $('.PageTurnPreviewRight').animate({'width': ''},
+                    {duration: 400, easing: 'swing'});
+        });
+
+
+    });
+
+
+
+    $('.pageTurnTargetRight').on('click', function () {
         var left = $('section.current .pageleft');
         var right = $('section.current .pageright');
         var current = $('section.current');
