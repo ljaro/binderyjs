@@ -1,2 +1,2 @@
 # binderyjs
-js librarty to change your page into book like view
+js lib to change your page into book like view
